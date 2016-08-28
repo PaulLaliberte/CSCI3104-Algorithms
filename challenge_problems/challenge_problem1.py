@@ -12,10 +12,21 @@ You are not allowed to use extra arrays or hashtables. You may however rearrange
 #If no missing values, return n+1 (j+1 in my algo)
 #
 #Time Complexity: 
-# l.sort() => O(nlogn); for... and if => O(n)
+#    not O(n), nested for loop... O(n^2)
+
+def sortArray(array):
+    length = len(array)
+    for i in range(length):
+        if (i + 1 <= length-1) and array[i] > array[i+1]:
+            array[i], array[i+1] = array[i+1], array[i]
+
+
+def completeSort(array):
+    for i in range(len(array)):
+        sortArray(array)
+
 
 def findMissing(array):
-    array.sort()
     missing = 0
     j = 1
     for i in array:
@@ -38,8 +49,9 @@ def findMissing(array):
 arr = [1]
 arr1 = [1,6,2,5,4]
 arr2 = [1,2,3,4,5]
-print(findMissing(arr2))
+arr3 = [1,342,10283,3,1221,1000000]
 
 
-    
-
+sortArray(arr3)
+completeSort(arr3)
+print(findMissing(arr3))
