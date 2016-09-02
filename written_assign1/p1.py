@@ -1,4 +1,4 @@
-def findCommonElement(array1, array2):
+def checkIfCommonElement(array1, array2):
     i=0
     j=0
 
@@ -17,5 +17,5 @@ a = [3,5,456,23324]
 b = [1,2,3,4]
 c = [1,2,3,4,5]
 d = [6,7,8,9,10]
-print(findCommonElement(a,b))
-print(findCommonElement(c,d))
+print(checkIfCommonElement(a,b))
+print(checkIfCommonElement(c,d))
