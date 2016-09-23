@@ -22,4 +22,3 @@ print(recursiveFindMax(b, 0, len(b)-1))
 print(recursiveFindMax(c, 0, len(c)-1))
 print(recursiveFindMax(d, 0, len(d)-1))
 
-

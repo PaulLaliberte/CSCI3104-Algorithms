@@ -18,7 +18,11 @@ def maximumProfit(array):
 
 
 #Tests
-a = [1,2,500,12312,2123,22,3]
-b = [10,12320,450, 2321]
+a = [1,4,6,7,3,1]
+b = [100,23,1123,678,45,987]
+c = [1000, 23, 445, 987, 0, 1, 123]
+d = [2324, 3000, 4, 9, 123]
 print(maximumProfit(a))
 print(maximumProfit(b))
+print(maximumProfit(c))
+print(maximumProfit(d))

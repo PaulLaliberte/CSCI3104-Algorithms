@@ -27,13 +27,19 @@ def findMaximumProfit(array):
 a = [1,4,6,7,3,1]
 b = [100,23,1123,678,45,987]
 c = [1000, 23, 445, 987, 0, 1, 123]
+d = [2324, 3000, 4, 9, 123]
 print(findMinimum(a,0,5))
 print(findMinimum(b,1,5))
 print(findMinimum(c,0,6))
+print(findMinimum(d,0,4))
 print("\n")
 print("Finding maximum profit")
 print(findMaximumProfit(a))
 print(findMaximumProfit(b))
+print(findMaximumProfit(c))
+print(findMaximumProfit(d))
+
+
 
 
 
