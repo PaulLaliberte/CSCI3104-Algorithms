@@ -13,7 +13,9 @@ class Node:
         self.right = None
 
     def insert(self, key_to_insert, node=None, nodeBool=False):
-        if key_to_insert < self.key and self.left is None:
+        if key_to_insert is self.key:
+            pass
+        elif key_to_insert < self.key and self.left is None:
             self.left = Node(key_to_insert)
         elif key_to_insert > self.key and self.right is None:
             self.right = Node(key_to_insert)
@@ -28,7 +30,9 @@ class Node:
 
 
         if nodeBool is True:
-            if key_to_insert < node.key:
+            if key_to_insert is node.key:
+                pass
+            elif key_to_insert < node.key:
                 if node.left is None:
                     node.left = Node(key_to_insert)
                 else:
@@ -46,33 +50,45 @@ class Node:
 
     def inorder_traversal(self, ret_list):
         #return list of nodes of inorder
+
         pass
 
     def get_depth(self):
         #return depth
         pass
 
-    def key_exists(self, key):
+    def key_exists(self, key, node=None):
+        
+        key_found = False
+
         if key is self.key:
-            return True
-        elif key < self.key:
-            node = self.left
-            findKey(node, key)
-        else:
-            node = self.right
-            findKey(node, key)
-            findKey(node, key)
+            key_found = True
+            return key_found
 
-    def findKey(self, node, key):
-        if key is node.key:
-            return True
-        elif key < node.key:
-            node = node.left
-            findKey(node, key)
-        else:
-            node = node.right
-            findKey(node, key)
+        elif node is None:
+            if self.left is None and self.right is None:
+                return False
+            elif key < self.key and self.left is not None:
+                node = self.left
+                return self.key_exists(key, node)
+            elif key > self.key and self.right is not None:
+                node = self.right
+                return self.key_exists(key, node)
+            else:
+                return False
 
+        elif node is not None:
+            if key is node.key:
+                key_found = True
+                return key_found
+            elif key < node.key and node.left is not None:
+                node = node.left
+                return self.key_exists(key, node)
+            elif key > node.key and node.right is not None:
+                node = node.right
+                return self.key_exists(key, node)
+            else:
+                return key_found
 
 
 
