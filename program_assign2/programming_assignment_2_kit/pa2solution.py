@@ -4,7 +4,7 @@ import sys
 import random
 
 # NAME: Paul Laliberte'
-# STUDENT ID NUMBER: 102312521
+# STUDENT ID NUMBER: #########
 # On my honor as a University of Colorado Boulder student, I have not received any unauthorized help.
 # I also realize that plagiarizing code defeats the purpose of an assignment like this and that the
 # instructors and TAs have very sophisticated approaches to finding such plagiarism that can defeat
@@ -19,12 +19,12 @@ def free_time_intervals(interval_lst, T):
     x = 0
     if interval_lst[0][0] > x:
         missing.append((0, interval_lst[0][0]))             #1. check if start time missing
-                                                            #O(1)
+                                                            
     y = interval_lst[0][1]
     i = 1
 
-    for i in range(1, len(interval_lst)):                 #2. check internal times 
-        if interval_lst[i][0] not in range(x,y+1):                       #O(n)
+    for i in range(1, len(interval_lst)):                   #2. check internal times 
+        if interval_lst[i][0] not in range(x,y+1):          #O(n)
             if interval_lst[i][0] > T:
                 missing.append((y, T))
             else:
@@ -36,8 +36,8 @@ def free_time_intervals(interval_lst, T):
 
 
     max_second_ele = 0
-    for i in interval_lst:
-        max_tuple = max(interval_lst, key=lambda x:x[1])
+    for i in interval_lst:                                  #3 check last time
+        max_tuple = max(interval_lst, key=lambda x:x[1])    #O(n)
         max_second_ele = max_tuple[1]
 
     if max_second_ele < T:
@@ -47,7 +47,7 @@ def free_time_intervals(interval_lst, T):
 
 
 
-    #Total Time: T(n) = 2O(nlogn) + O(n) + 2O(1)
+    #Total Time: T(n) = 2O(nlogn) + 2O(n) + CO(1), C in Naturals
     #                 = O(nlogn)
 
 
