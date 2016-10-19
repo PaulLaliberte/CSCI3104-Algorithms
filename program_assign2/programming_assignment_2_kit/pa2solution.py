@@ -26,18 +26,23 @@ def free_time_intervals(interval_lst, T):
     for i in range(1, len(interval_lst)):                   #2. check internal times 
         if interval_lst[i][0] not in range(x,y+1):          #O(n)
             if interval_lst[i][0] > T:
-                missing.append((y, T))
+                if y <= T:    
+                    missing.append((y, T))
+                    break
+                else:
+                    break
             else:
                 missing.append((y, interval_lst[i][0]))
                 y = interval_lst[i][1]
         else:
+            if interval_lst[i][1] > T:
+                break
             if interval_lst[i][1] > y:
                 y = interval_lst[i][1]
 
 
     max_tuple_element = interval_lst[len(interval_lst) - 1][1]
-
-    if max_tuple_element < T:
+    if max_tuple_element <= T and y < T:
         missing.append((y,T))
 
     missing.sort()                                          #O(nlogn)
@@ -72,10 +77,11 @@ def max_logged_in(interval_lst, T):
                     time_int = interval_lst[i][0]
             else:
                 max_time.append((count, time_int))
-                count = 1
                 x = interval_lst[i][0]
                 y = interval_lst[i][1]
                 time_int = x
+
+    max_time.append((count, time_int))
 
     tup = max(max_time, key=lambda x:x[0])
 
