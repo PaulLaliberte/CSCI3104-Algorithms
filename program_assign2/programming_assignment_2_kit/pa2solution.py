@@ -59,33 +59,53 @@ def free_time_intervals(interval_lst, T):
 
 
 def max_logged_in(interval_lst, T):
-    max_time = []
-    interval_lst.sort()
-    count = 1
-    x = interval_lst[0][0]
-    y = interval_lst[0][1]
-    time_int = x
-    i = 1
+    max_list = []
+    count = 0
+    logged_in = 0
+    time = 0
 
-    if len(interval_lst) > 1:
-        for i in range(1, len(interval_lst)):
-            if interval_lst[i][0] <= y:
-                count += 1
-                if interval_lst[i][1] < y:
-                    y = interval_lst[i][1]
-                if interval_lst[i][0] > x:
-                    time_int = interval_lst[i][0]
-            else:
-                max_time.append((count, time_int))
-                x = interval_lst[i][0]
-                y = interval_lst[i][1]
-                time_int = x
 
-    max_time.append((count, time_int))
+    for i in range(0, len(interval_lst)):                       #O(n)
+        if interval_lst[i][0] <= T or interval_lst[i][0] <= T:
+            max_list.append((interval_lst[i][0], 0))
+            max_list.append((interval_lst[i][1], 1))
+        else:
+            pass
 
-    tup = max(max_time, key=lambda x:x[0])
+    max_list = sorted(max_list, key=lambda x: x[0])             #O(nlgn)
 
-    return tup
+    for i in range(0, len(max_list)):                           #O(n)
+        if max_list[i][1] == 0:
+            count += 1
+            if count > logged_in:
+                logged_in = count
+                time = max_list[i][0]
+        else:
+            count -= 1
+
+
+    #Total Time: T(n) = O(nlgn) + 2O(n) + CO(1), C in Naturals
+    #                   O(nlgn)
+
+    return (logged_in, time)
+
+
+
+
+
+
+
+
+
+        
+        
+       
+
+
+
+
+
+
 
 
 
