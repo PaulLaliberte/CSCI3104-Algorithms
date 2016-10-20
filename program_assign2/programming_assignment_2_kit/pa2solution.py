@@ -4,7 +4,7 @@ import sys
 import random
 
 # NAME: Paul Laliberte'
-# STUDENT ID NUMBER: #########
+# STUDENT ID NUMBER: 102312521
 # On my honor as a University of Colorado Boulder student, I have not received any unauthorized help.
 # I also realize that plagiarizing code defeats the purpose of an assignment like this and that the
 # instructors and TAs have very sophisticated approaches to finding such plagiarism that can defeat
@@ -21,7 +21,6 @@ def free_time_intervals(interval_lst, T):
         missing.append((0, interval_lst[0][0]))             #1. check if start time missing
                                                             
     y = interval_lst[0][1]
-    i = 1
 
     for i in range(1, len(interval_lst)):                   #2. check internal times 
         if interval_lst[i][0] not in range(x,y+1):          #O(n)
@@ -59,51 +58,40 @@ def free_time_intervals(interval_lst, T):
 
 
 def max_logged_in(interval_lst, T):
-    max_list = []
+    #solution gets through 35, 36 in good time
     count = 0
     logged_in = 0
     time = 0
+    list1 = []
 
-
-    for i in range(0, len(interval_lst)):                       #O(n)
-        if interval_lst[i][0] <= T:
-            max_list.append((interval_lst[i][0], 0))
-            max_list.append((interval_lst[i][1], 1))
+    for i in range(0, len(interval_lst)):                                   #O(n)
+        if interval_lst[i][0] <= T or interval_lst[i][1] <= T:
+            list1.append(('IN', interval_lst[i][0]))
+            list1.append(('OUT', interval_lst[i][1]))
         else:
             pass
+            
 
-    max_list = sorted(max_list, key=lambda x: x[0])             #O(nlgn)
+    list1 = sorted(list1, key=lambda x:x[1])                                #O(nlgn)
 
-    for i in range(0, len(max_list)):                           #O(n)
-        if max_list[i][1] == 0:
+
+    for i in range(0, len(list1)):                                          #O(n)
+        if list1[i][0] == 'IN':
             count += 1
-            if count > logged_in:
+            if logged_in < count:
                 logged_in = count
-                time = max_list[i][0]
+                time = list1[i][1]
         else:
             count -= 1
 
 
-    #Total Time: T(n) = O(nlgn) + 2O(n) + CO(1), C in Naturals
-    #                   O(nlgn)
+    #Total Time: T(n) = O(nlgn) + 2O(n) + CO(1), where C in Naturals 
+    #                 = O(nlgn)
+
+
 
     return (logged_in, time)
-
-
-
-
-
-
-
-
-
         
-        
-       
-
-
-
-
 
 
 
