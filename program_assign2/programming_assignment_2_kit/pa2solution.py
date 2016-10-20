@@ -66,7 +66,7 @@ def max_logged_in(interval_lst, T):
 
 
     for i in range(0, len(interval_lst)):                       #O(n)
-        if interval_lst[i][0] <= T or interval_lst[i][0] <= T:
+        if interval_lst[i][0] <= T:
             max_list.append((interval_lst[i][0], 0))
             max_list.append((interval_lst[i][1], 1))
         else:
