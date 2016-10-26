@@ -4,7 +4,7 @@ import sys
 import random
 
 # NAME: Paul Laliberte'
-# STUDENT ID NUMBER: 102312521
+# STUDENT ID NUMBER: ##########
 # On my honor as a University of Colorado Boulder student, I have not received any unauthorized help.
 # I also realize that plagiarizing code defeats the purpose of an assignment like this and that the
 # instructors and TAs have very sophisticated approaches to finding such plagiarism that can defeat
