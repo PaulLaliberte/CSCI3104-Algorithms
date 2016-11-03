@@ -6,6 +6,7 @@
 from __future__ import print_function
 import sys
 import copy
+import collections
 
 # We will use a class called my trie node
 class MyTrieNode:
@@ -16,54 +17,37 @@ class MyTrieNode:
         #Change it as you will.
         # But do not change the signature of the constructor.
         self.isRoot = isRootNode
-        self.isWordEnd = False # is this node a word ending node
-        #self.isRoot = False # is this a root node
         self.count = 0 # frequency count
         self.next = {} # Dictionary mappng each character from a-z to the child node
 
 
     def addWord(self,w):
         if len(w) != 0:
-            for i in range(0, len(w)):
-                if w[i] not in self.next:
-                    array = []
-                    try:
-                        tup = (w[i+1], MyTrieNode(False))
-                        array.append(tup)
-                        self.next[w[i]] = array
-                    except IndexError:
-                        #end of word
-                        pass
-                else:
-                    try:
-                        inArray = False
-                        tmp = self.next[w[i]]
-                        for j in tmp:
-                            if w[i+1] in j:
-                                inArray = True
-
-                        if inArray is False:
-                            tup = (w[i+1], MyTrieNode(False))
-                            array = self.next[w[i]]
-                            newArray = copy.copy(array)
-                            print(newArray)
-                            newArray.append(tup)
-                            self.next[w[i]] = newArray
-                    except IndexError:
-                        #end of word
-                        pass
+            if w[0] not in self.next:
+                self.next[w[0]] = MyTrieNode(False)
+                self = self.next[w[0]]
+                self.addWord(w[1:])
+            else:
+                self = self.next[w[0]]
+                self.addWord(w[1:])
+        else:
+            self.count += 1
 
 
         
 
-    def lookupWord(self,w):
-        # Return frequency of occurrence of the word w in the trie
-        # returns a number for the frequency and 0 if the word w does not occur.
+    def lookupWord(self, w):
+        if len(w) != 0:
+            if w[0] not in self.next:
+                return 0
+            else:
+                self = self.next[w[0]]
+                return self.lookupWord(w[1:])
+        else:
+            return self.count
 
-        # YOUR CODE HERE
-        
-        return 0 # TODO: change this line, please
-    
+
+
 
     def autoComplete(self,w):
         #Returns possible list of autocompletions of the word w
@@ -87,14 +71,16 @@ if (__name__ == '__main__'):
     j = t.lookupWord('testy') # should return 0
     j2 = t.lookupWord('telltale') # should return 0
     j3 = t.lookupWord ('testing') # should return 2
-    lst3 = t.autoComplete('pi')
-    print('Completions for \"pi\" are : ')
-    print(lst3)
+    print(j, j2, j3)
+    #lst3 = t.autoComplete('pi')
+    #print('Completions for \"pi\" are : ')
+    #print(lst3)
     
-    lst4 = t.autoComplete('tes')
-    print('Completions for \"tes\" are : ')
-    print(lst4)
+    #lst4 = t.autoComplete('tes')
+    #print('Completions for \"tes\" are : ')
+    #print(lst4)
 """
+
 
  
     

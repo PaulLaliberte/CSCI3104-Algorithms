@@ -37,20 +37,9 @@ if __name__ == '__main__':
     """
     *******************
     #Testing for part D
+    To test for D memo table, change intitial_frog_poisiton = x, where
+    x is where you would like to start
     *******************
-    b = ['S']
-    c = ['S', 'D', 'S']
-    d = ['S','S','D','S']
-    e = ['B','D','S','S','D','S']
-    f = ['S','D','B','D','S','S','D','S']
-    g = ['S','S','D','B','D','S','S','D','S']
-    h = ['S','S','S','D','B','D','S','S','D','S']
-    i = ['S','S','S','S','D','B','D','S','S','D','S']
-    j = ['S','S','S','S','S','D','B','D','S','S','D','S']
-    k = ['B','S','S','S','S','S','D','B','D','S','S','D','S']
-    l = ['S','D','B','S','S','S','S','S','D','B','D','S','S','D','S']
-    m = ['S','S','D','B','S','S','S','S','S','D','B','D','S','S','D','S']
-    n = ['S','S','S','D','B','S','S','S','S','S','D','B','D','S','S','D','S']
     """
 
     frogGame(a,intitial_frog_poisiton,intitial_energy,path,solution_paths)
